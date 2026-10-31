@@ -1,0 +1,426 @@
+/* Host Connect for Bluehost. Colours lean on currentColor/transparency so the panel follows Local's light and dark themes. */
+
+.BHConnect {
+	padding: 20px 30px 30px;
+	max-width: 720px;
+	font-size: 14px;
+	line-height: 1.45;
+}
+
+.BHConnect_Title {
+	margin-bottom: 14px;
+}
+
+.BHConnect_SectionTitle {
+	margin: 22px 0 10px;
+}
+
+.BHConnect_Intro {
+	margin: 0 0 16px;
+	opacity: 0.8;
+}
+
+.BHConnect_Tabs {
+	display: flex;
+	gap: 4px;
+	margin-bottom: 18px;
+	border-bottom: 1px solid rgba(127, 127, 127, 0.3);
+}
+
+.BHConnect_Tab {
+	appearance: none;
+	background: none;
+	border: 0;
+	border-bottom: 2px solid transparent;
+	color: inherit;
+	cursor: pointer;
+	font: inherit;
+	font-weight: 600;
+	margin-bottom: -1px;
+	opacity: 0.65;
+	padding: 8px 12px;
+}
+
+.BHConnect_Tab.is-active {
+	border-bottom-color: #196cdf;
+	opacity: 1;
+}
+
+.BHConnect_Tab:focus-visible {
+	outline: 2px solid #196cdf;
+	outline-offset: 2px;
+}
+
+.BHConnect_Form {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.BHConnect_Row {
+	display: grid;
+	grid-template-columns: 1fr 90px;
+	gap: 12px;
+}
+
+.BHConnect_Field {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+.BHConnect_FieldLabel {
+	font-weight: 600;
+	font-size: 13px;
+}
+
+.BHConnect_Help {
+	font-size: 12px;
+	opacity: 0.7;
+}
+
+.BHConnect_Help a {
+	color: #196cdf;
+}
+
+/*
+ * Fully styled instead of the native macOS control, which has a fixed height and clips padded text. The
+ * chevron is a mid-grey that reads on both themes; color-scheme keeps the popup menu in Local's theme.
+ */
+.BHConnect_Select {
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: transparent;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23999' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+	background-position: right 14px center;
+	background-repeat: no-repeat;
+	border: 1px solid rgba(127, 127, 127, 0.45);
+	border-radius: 4px;
+	box-sizing: border-box;
+	color: inherit;
+	color-scheme: light dark;
+	cursor: pointer;
+	font: inherit;
+	height: auto;
+	line-height: 1.4;
+	min-height: 44px;
+	overflow: hidden;
+	padding: 10px 40px 10px 14px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 100%;
+}
+
+.BHConnect_Select:hover {
+	border-color: rgba(127, 127, 127, 0.7);
+}
+
+.BHConnect_Select:focus-visible {
+	border-color: #196cdf;
+	outline: none;
+	box-shadow: 0 0 0 1px #196cdf;
+}
+
+.BHConnect_AuthChoice {
+	display: flex;
+	gap: 20px;
+}
+
+.BHConnect_AuthChoice label {
+	cursor: pointer;
+}
+
+.BHConnect_KeyBox {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 6px;
+}
+
+.BHConnect_KeyText {
+	background: rgba(127, 127, 127, 0.08);
+	border: 1px solid rgba(127, 127, 127, 0.35);
+	border-radius: 4px;
+	box-sizing: border-box;
+	color: inherit;
+	font-family: Menlo, Consolas, monospace;
+	font-size: 11px;
+	padding: 8px;
+	resize: none;
+	width: 100%;
+	word-break: break-all;
+}
+
+.BHConnect_Account {
+	align-items: center;
+	display: flex;
+	gap: 12px;
+	justify-content: space-between;
+}
+
+.BHConnect_Table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.BHConnect_Table th,
+.BHConnect_Table td {
+	border-bottom: 1px solid rgba(127, 127, 127, 0.2);
+	padding: 8px 0;
+	text-align: left;
+	vertical-align: top;
+}
+
+.BHConnect_Table th {
+	font-weight: 600;
+	padding-right: 20px;
+	white-space: nowrap;
+	width: 130px;
+}
+
+.BHConnect_Table td {
+	word-break: break-all;
+}
+
+.BHConnect_Options {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.BHConnect_Consequences {
+	margin: 16px 0 0;
+	opacity: 0.8;
+	padding-left: 18px;
+}
+
+.BHConnect_Actions {
+	align-items: center;
+	display: flex;
+	gap: 16px;
+	margin-top: 16px;
+}
+
+.BHConnect_Secondary {
+	align-items: center;
+	border-top: 1px solid rgba(127, 127, 127, 0.2);
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+	margin-top: 24px;
+	padding-top: 16px;
+}
+
+.BHConnect_Busy {
+	align-items: center;
+	display: flex;
+	gap: 10px;
+	opacity: 0.8;
+}
+
+.BHConnect_Error,
+.BHConnect_Warning,
+.BHConnect_Success {
+	border-radius: 4px;
+	font-size: 13px;
+	margin-top: 12px;
+	padding: 10px 12px;
+	white-space: pre-wrap;
+}
+
+.BHConnect_Error {
+	background: rgba(226, 67, 67, 0.12);
+	border: 1px solid rgba(226, 67, 67, 0.45);
+}
+
+.BHConnect_Warning {
+	background: rgba(241, 177, 66, 0.14);
+	border: 1px solid rgba(241, 177, 66, 0.45);
+}
+
+.BHConnect_Success {
+	background: rgba(81, 187, 123, 0.12);
+	border: 1px solid rgba(81, 187, 123, 0.45);
+}
+
+.BHConnect_Modal {
+	padding: 10px 10px 0;
+	text-align: left;
+	width: 520px;
+	max-width: 100%;
+}
+
+.BHConnect_Tabs--Transfer {
+	margin-top: 24px;
+}
+
+.BHConnect_HeaderButtons {
+	align-items: center;
+	display: inline-flex;
+	gap: 8px;
+	margin-left: 10px;
+}
+
+.BHConnect_HeaderLabel {
+	font-size: 12px;
+	font-weight: 600;
+	opacity: 0.7;
+}
+
+.BHConnect_HeaderButton {
+	white-space: nowrap;
+}
+
+/* Compare & sync */
+
+.BHConnect_Actions--Top {
+	margin-top: 0;
+}
+
+.BHConnect_Summary {
+	font-weight: 600;
+	margin: 16px 0 10px;
+}
+
+.BHConnect_Filter {
+	margin-bottom: 12px;
+}
+
+.BHConnect_Group {
+	border: 1px solid rgba(127, 127, 127, 0.25);
+	border-radius: 4px;
+	margin-bottom: 12px;
+	max-height: 360px;
+	overflow-y: auto;
+}
+
+.BHConnect_GroupHeader {
+	align-items: center;
+	background: rgba(127, 127, 127, 0.08);
+	cursor: pointer;
+	display: flex;
+	font-weight: 600;
+	gap: 8px;
+	padding: 8px 10px;
+	position: sticky;
+	top: 0;
+}
+
+.BHConnect_FileRow {
+	align-items: baseline;
+	border-top: 1px solid rgba(127, 127, 127, 0.15);
+	cursor: pointer;
+	display: grid;
+	gap: 4px 8px;
+	grid-template-columns: auto 1fr;
+	padding: 6px 10px;
+}
+
+.BHConnect_FileRow:hover {
+	background: rgba(127, 127, 127, 0.06);
+}
+
+.BHConnect_FilePath {
+	font-family: Menlo, Consolas, monospace;
+	font-size: 12px;
+	overflow-wrap: anywhere;
+}
+
+.BHConnect_FileMeta {
+	display: flex;
+	flex-wrap: wrap;
+	font-size: 12px;
+	gap: 4px 12px;
+	grid-column: 2;
+	opacity: 0.75;
+}
+
+.BHConnect_Badge {
+	border: 1px solid currentColor;
+	border-radius: 10px;
+	font-size: 11px;
+	font-weight: 600;
+	padding: 0 7px;
+}
+
+.BHConnect_Badge--local {
+	color: #3b82c4;
+}
+
+.BHConnect_Badge--remote {
+	color: #d9822b;
+}
+
+.BHConnect_SyncBar {
+	background: inherit;
+	bottom: 0;
+	justify-content: flex-end;
+	padding: 10px 0;
+	position: sticky;
+}
+
+.BHConnect_SyncBar > span {
+	margin-right: auto;
+	opacity: 0.8;
+}
+
+/* Pull to a new site */
+
+.BHConnect_NewSite {
+	margin: 0 auto;
+	max-width: 640px;
+	padding-top: 30px;
+}
+
+.BHConnect_NewSiteHeader {
+	align-items: center;
+	display: flex;
+	gap: 16px;
+	margin-bottom: 8px;
+}
+
+.BHConnect_NewSiteHeader .BHConnect_Title {
+	margin-bottom: 0;
+}
+
+.BHConnect_SecretInput {
+	align-items: center;
+	display: flex;
+	gap: 10px;
+}
+
+.BHConnect_SecretInput > :first-child {
+	flex: 1;
+}
+
+/* Update notice and version line */
+.BHConnect_Update {
+	background: rgba(25, 108, 223, 0.08);
+	border: 1px solid rgba(25, 108, 223, 0.35);
+	border-radius: 4px;
+	display: flex;
+	flex-direction: column;
+	font-size: 13px;
+	gap: 8px;
+	margin: 0 0 16px;
+	padding: 10px 12px;
+}
+
+.BHConnect_UpdateActions {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+}
+
+.BHConnect_Version {
+	align-items: center;
+	border-top: 1px solid rgba(128, 128, 128, 0.2);
+	display: flex;
+	flex-wrap: wrap;
+	font-size: 12px;
+	gap: 12px;
+	margin-top: 32px;
+	opacity: 0.75;
+	padding-top: 12px;
+}
