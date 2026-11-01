@@ -5,6 +5,7 @@
   "description": "Push Local sites (files, database, or both) to Bluehost shared hosting and Bluehost Cloud, the same way Local Connect pushes to WP Engine and Flywheel.",
   "author": "Marcus Burnette",
   "license": "MIT",
+  "repository": "github:mburnette/local-addon-bluehost-connect",
   "keywords": [
     "local-addon"
   ],
@@ -19,6 +20,7 @@
     "lib",
     "icon.svg",
     "README.md",
+    "CHANGELOG.md",
     "LICENSE"
   ],
   "scripts": {
