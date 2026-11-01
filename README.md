@@ -1,4 +1,4 @@
-# Host Connect for Bluehost
+# ConnectLocal for Bluehost
 
 A [Local](https://localwp.com) add-on that connects Local to WordPress sites on [Bluehost](https://www.bluehost.com) shared hosting and Bluehost Cloud. It works the way Local Connect does for WP Engine and Flywheel. You can:
 
@@ -9,7 +9,7 @@ A [Local](https://localwp.com) add-on that connects Local to WordPress sites on 
 
 Bluehost has no public hosting API, so everything runs over SSH. That means rsync for files and WP-CLI for the database, the same tools Local Connect uses for WP Engine.
 
-| Step | WP Engine (built in) | Host Connect for Bluehost |
+| Step | WP Engine (built in) | ConnectLocal for Bluehost |
 | --- | --- | --- |
 | Auth | WP Engine account + Local's SSH key registered via CAPI | **Shared:** your SSH (cPanel) login. With a password, the add-on adds its own SSH key to `~/.ssh/authorized_keys` and then stops storing the password. **Cloud:** a per-site SSH user on `ssh.atomicsites.net` with the add-on's public key. |
 | Finding the site | CAPI install list | Lists every WordPress install in the account, using cPanel's domain list (`uapi DomainInfo domains_data`) for names and `wp option get home` for URLs |
@@ -42,7 +42,7 @@ npm run install-addon
 
 This symlinks the folder into Local's add-ons directory (`~/Library/Application Support/Local/addons` on macOS) and enables it. **Restart Local** to load it. To remove it, run `npm run install-addon -- --remove`.
 
-This add-on is separate from Host Connect for Cloudways and Host Connect for Kinsta, and can be installed next to them: package names, IPC channels, CSS classes, storage folders and ignore files are all distinct.
+This add-on is separate from ConnectLocal for Cloudways and ConnectLocal for Kinsta, and can be installed next to them: package names, IPC channels, CSS classes, storage folders and ignore files are all distinct.
 
 ### From a release
 
@@ -130,7 +130,7 @@ To skip more, add rsync patterns (one per line) to `app/public/.bluehost-push-ig
 ## Security notes
 
 - **Secrets:** any stored SSH password is encrypted with Electron `safeStorage` (Keychain on macOS, DPAPI on Windows). It is stored in `<Local data>/bluehost-connect/settings.json` and never sent to the renderer. With the default "add Local's SSH key" option, no password is stored at all.
-- **SSH key and known hosts:** the add-on keeps its own RSA key in `<Local data>/bluehost-connect/ssh/`, separate from Local's WP Engine key and from the other Host Connect add-ons' keys. It also keeps its own `known_hosts` file, which pins each server's host key on first connect.
+- **SSH key and known hosts:** the add-on keeps its own RSA key in `<Local data>/bluehost-connect/ssh/`, separate from Local's WP Engine key and from the other ConnectLocal add-ons' keys. It also keeps its own `known_hosts` file, which pins each server's host key on first connect.
 - **Passwords:** SSH passwords go to `ssh` through `SSH_ASKPASS` and an environment variable. They are never put in argv or written to disk.
 - **Removing access:** when you disconnect the account, you can also remove the add-on's key from `authorized_keys`. The key stays if a linked site still uses it.
 - **What the add-on writes on the server:** a line in `~/.ssh/authorized_keys` (shared, password option), a private `~/.bluehost-connect` folder for dumps and backups, and, only when the server has no WP-CLI, `~/.bluehost-connect/wp-cli.phar`, downloaded from the official WP-CLI builds.
