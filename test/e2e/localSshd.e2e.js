@@ -243,7 +243,9 @@ test('pushes to and pulls from a stand-in server over ssh/rsync', { skip: !SSHD 
 	assert.ok(!fs.existsSync(path.join(remoteWeb, 'wp-content', 'themes', 'gone')) && !isLink(path.join(remoteWeb, 'wp-content', 'themes', 'gone')));
 
 	// Database: backup outside the webroot, collations rewritten, temp dump cleaned up
-	const privateDir = path.join(appDir, '.bluehost-connect');
+	// The site's own folder in ~/.bluehost-connect, named after its webroot.
+	const privateRoot = path.join(appDir, '.bluehost-connect');
+	const privateDir = path.join(privateRoot, fs.readdirSync(privateRoot).find((f) => /^public_html-\d+$/.test(f)) || 'missing');
 	assert.ok(fs.existsSync(path.join(privateDir, 'local-backup-before-push.sql')));
 	const imported = fs.readFileSync(path.join(dirs.state, 'imported.sql'), 'utf8');
 	assert.ok(imported.includes('utf8mb4_unicode_520_ci') && !imported.includes('0900'));

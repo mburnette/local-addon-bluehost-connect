@@ -87,10 +87,11 @@ On cPanel, addon domains and subdomains are often served from folders **inside**
 ### What a database push does
 
 1. Exports the Local database and rewrites MySQL 8 `utf8mb4_0900_*` collations to ones MariaDB and older MySQL accept.
-2. On Bluehost, saves the current database to `local-backup-before-push.sql` in a private `~/.bluehost-connect` folder. The folder is outside `public_html` and readable only by your account. The add-on also reads the current `home` URL and `table_prefix`.
+2. On Bluehost, saves the current database to `local-backup-before-push.sql` in a private folder for this site, `~/.bluehost-connect/<site folder>` (mode 700, outside `public_html`, one per site so the sites of one cPanel account never share it). The add-on also reads the current `home` URL and `table_prefix`.
 3. Uploads the dump to that folder, then runs `wp db reset` and `wp db import`. If the import fails, it restores the backup automatically. The uploaded dump is always deleted afterwards.
+   - When the database also holds another site's tables (a different table prefix, such as a second WordPress in a subfolder), it drops only this site's tables instead of resetting the whole database, and the backup holds only those tables. If the Local site's table prefix would overwrite the other site's tables, the push stops before changing anything.
 4. Sets `table_prefix` to match Local if the two differ.
-5. Runs `wp search-replace` across all tables (`--precise`, `guid` skipped) from `//site.local` to the Bluehost URL, including the JSON-escaped form, plus `http://` → `https://` when the Bluehost site uses HTTPS.
+5. Runs `wp search-replace` across all tables (only this site's prefix in a shared database; `--precise`, `guid` skipped) from `//site.local` to the Bluehost URL, including the JSON-escaped form, plus `http://` → `https://` when the Bluehost site uses HTTPS.
 
 ### What a database pull does
 

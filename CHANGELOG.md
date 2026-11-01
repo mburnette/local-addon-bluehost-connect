@@ -5,6 +5,14 @@ turns that section into the new version's entry and uses it as the GitHub releas
 
 ## Unreleased
 
+- Pushing to a folder whose path has a space no longer splits the path on the server, which could make a push
+  with **Delete files on Bluehost that are not in Local** land in the wrong folder.
+- Each site now keeps its pre-push database backup in a folder of its own (`~/.bluehost-connect/<site folder>`), so
+  pushing one site of a cPanel account no longer overwrites another site's backup.
+- A database push into a database that also holds another site's tables (a different table prefix) replaces only this
+  site's tables instead of resetting the whole database, and stops before changing anything if the Local site's table
+  prefix would overwrite the other site's tables. A pull downloads only this site's tables.
+
 ## 1.1.0 - 2026-10-31
 
 - Renamed to ConnectLocal for Bluehost.
