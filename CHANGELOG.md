@@ -5,6 +5,8 @@ turns that section into the new version's entry and uses it as the GitHub releas
 
 ## Unreleased
 
+## 1.1.0 - 2026-10-31
+
 - Renamed to ConnectLocal for Bluehost.
 - Update checks now work. The add-on looks for new releases on GitHub when Local starts and every 12 hours, and
   shows an **Update** button in its panel when one is out.
